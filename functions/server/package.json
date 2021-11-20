@@ -1,0 +1,28 @@
+{
+  "name": "apollo-graphql",
+  "version": "1.0.0",
+  "description": "netlify functions:create - set up for apollo graphql",
+  "main": "apollo-graphql.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "js",
+    "apollo"
+  ],
+  "author": "Netlify",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "apollo-server-lambda": "^2.18.2",
+    "argon2": "^0.27.1",
+    "esm": "^3.2.25",
+    "graphql": "^14.1.1",
+    "isemail": "^3.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongo": "^0.1.0",
+    "randombytes": "^2.1.0"
+  }
+}
