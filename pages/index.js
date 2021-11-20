@@ -1,23 +1,22 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import { Box, Typography } from '@mui/material'
+import Layout from 'src/components/layout'
+import Main from 'src/pages/main'
 
-export default function Home() {
+export default function Index() {
+  //if no session return this
+  //if logged in return list
+  //add edit route
   return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
-
-      <Footer />
-    </div>
+    <Layout>
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignContent="center"
+        height={'100%'}
+      >
+        <Main />
+      </Box>
+    </Layout>
   )
 }
