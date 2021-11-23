@@ -16,6 +16,10 @@ import MailIcon from '@mui/icons-material/Mail'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import { useRouter } from 'next/router'
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize'
+import AddBoxIcon from '@mui/icons-material/AddBox'
+import AddDialog from './addDialog'
+import { AppBar as AppBarMui } from '@mui/material'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -143,10 +147,10 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit" size="large">
           <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+            <AddDialog />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>New</p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -177,7 +181,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -212,7 +216,7 @@ export default function PrimarySearchAppBar() {
               size="large"
             >
               <Badge badgeContent={0} color="secondary">
-                <MailIcon />
+                <AddDialog />
               </Badge>
             </IconButton>
             <IconButton

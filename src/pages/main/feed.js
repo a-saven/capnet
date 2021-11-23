@@ -26,7 +26,7 @@ export default function Feed() {
     <Box
       xs={12}
       overflow="auto"
-      height={`calc(100vh - 220px)`}
+      height={`calc(100vh - 100px)`}
       pr={1}
       sx={{
         '&::-webkit-scrollbar': {
