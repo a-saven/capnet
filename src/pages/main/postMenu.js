@@ -1,62 +1,32 @@
-import React from 'react';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { useMutation } from "@apollo/client";
-import { gql } from '@apollo/client';
-import { POSTS } from './feed';
-
-const options = [
-  'Edit',
-  'Delete',
-];
-
-const ITEM_HEIGHT = 48;
-
-const DELETE_POST = gql`
-  mutation deletePost($id: ID) {
-    deletePost(id: $id ) 
-  }
-`;
+import React, { useState } from 'react'
+import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
+import Box from '@mui/material/Box'
+import MenuItem from '@mui/material/MenuItem'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import DeleteDialog from './deleteDialog'
 
 export default function LongMenu({ id }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
 
-  const [deletePost, { loading, error }] = useMutation(
-    DELETE_POST,
-    {
-      variables:  { id },
-      refetchQueries: [{
-        query: POSTS,
-      }],
-      onCompleted () {
-        //clearInput()
-      }
-    }
-  );
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = (option) => {
-    setAnchorEl(null);
-    if(option === "Delete") {
-      console.log('option', option)
-      deletePost();
-    }
-  };
+    setAnchorEl(null)
+  }
 
   return (
-    <div>
+    <Box>
       <IconButton
         aria-label="more"
         aria-controls="long-menu"
         aria-haspopup="true"
         onClick={handleClick}
-        size="large">
+        size="large"
+      >
         <MoreVertIcon />
       </IconButton>
       <Menu
@@ -67,19 +37,16 @@ export default function LongMenu({ id }) {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: 200,
-          },
+            maxHeight: 48 * 4.5,
+            width: 200
+          }
         }}
       >
-        {loading && "Loadign"}
-        {error && "Error"}
-        {options.map(option => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={() => handleClose(option)}>
-            {option}
-          </MenuItem>
-        ))}
+        <MenuItem onClick={() => handleClose('edit')}>Edit</MenuItem>
+        <MenuItem onClick={() => handleClose('delete')}>
+          <DeleteDialog id={id} />
+        </MenuItem>
       </Menu>
-    </div>
-  );
+    </Box>
+  )
 }

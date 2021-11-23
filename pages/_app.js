@@ -1,13 +1,14 @@
-import Head from "next/head";
-import ErrorBoundary from "src/components/utils/errorBoundary";
-import { SessionProvider } from "next-auth/react";
-import ThemeProvider from "src/theme";
-import { ApolloProvider } from "@apollo/client";
-import client from "client/apollo-client";
+import Head from 'next/head'
+import ErrorBoundary from 'src/components/utils/errorBoundary'
+import { SessionProvider } from 'next-auth/react'
+import ThemeProvider from 'src/theme'
+import { ApolloProvider } from '@apollo/client'
+import client from 'client/apollo-client'
+import { SnackbarProvider } from 'notistack'
 
 export default function App({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps: { session, ...pageProps }
 }) {
   return (
     <>
@@ -17,14 +18,16 @@ export default function App({
       </Head>
 
       <ErrorBoundary>
-        <ThemeProvider>
-          <ApolloProvider client={client}>
-            <SessionProvider session={session}>
-              <Component {...pageProps} />
-            </SessionProvider>
-          </ApolloProvider>
-        </ThemeProvider>
+        <SnackbarProvider maxSnack={3}>
+          <ThemeProvider>
+            <ApolloProvider client={client}>
+              <SessionProvider session={session}>
+                <Component {...pageProps} />
+              </SessionProvider>
+            </ApolloProvider>
+          </ThemeProvider>
+        </SnackbarProvider>
       </ErrorBoundary>
     </>
-  );
+  )
 }
