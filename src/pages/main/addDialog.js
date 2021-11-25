@@ -39,7 +39,7 @@ export default function FullScreenDialog() {
         TransitionComponent={Transition}
       >
         <AppBar
-          position="static"
+          position="relative"
           color="primary"
           sx={{ top: 'auto', bottom: 0, maxWidth: '100%' }}
         >
