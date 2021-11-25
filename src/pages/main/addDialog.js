@@ -5,6 +5,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
+import Box from '@mui/material/Box'
 import Slide from '@mui/material/Slide'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import Input from './input'
@@ -27,7 +28,7 @@ export default function FullScreenDialog() {
   return (
     <div>
       <Button
-        variant="tex"
+        variant="text"
         onClick={handleClickOpen}
         startIcon={<AddBoxIcon />}
       ></Button>
@@ -37,7 +38,11 @@ export default function FullScreenDialog() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }}>
+        <AppBar
+          position="static"
+          color="primary"
+          sx={{ top: 'auto', bottom: 0, maxWidth: '100%' }}
+        >
           <Toolbar>
             <IconButton
               edge="start"
@@ -47,12 +52,17 @@ export default function FullScreenDialog() {
             >
               <CloseIcon />
             </IconButton>
-            {/* <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Log
-            </Typography> */}
-            {/* <Button autoFocus color="inherit" onClick={handleClose}>
-              save
-            </Button> */}
+            {/* <Box
+              sx={{ ml: 'auto', flex: 1 }}
+              disply="flex"
+              alignItems="flex-end"
+            >
+              <Box>
+                <Button autoFocus color="inherit" onClick={handleClose}>
+                  Save
+                </Button>
+              </Box>
+            </Box> */}
           </Toolbar>
         </AppBar>
         <Input />

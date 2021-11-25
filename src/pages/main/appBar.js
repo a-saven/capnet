@@ -181,7 +181,11 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+      <AppBar
+        position="static"
+        color="primary"
+        sx={{ top: 'auto', bottom: 0, maxWidth: '100%' }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
