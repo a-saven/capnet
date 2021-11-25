@@ -28,7 +28,7 @@ const Input = ({ post }) => {
       justifyContent="center"
       height="90%"
     >
-      <Box width={'100%'} p={1}>
+      <Box width={{ xs: '100%', xl: '50%' }} p={1}>
         <Box width={'90%'} m={3}>
           <TextField
             id="title-input"
