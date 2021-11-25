@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-lambda";
+import { gql } from 'apollo-server-lambda'
 
 export default gql`
   type Query {
@@ -6,6 +6,7 @@ export default gql`
   }
   type Mutation {
     addPost(text: String, title: String, tag: String): Post
+    editPost(_id: ID, text: String, title: String, tag: String): Post
     deletePost(id: ID): Boolean
   }
   type Post {
@@ -17,4 +18,4 @@ export default gql`
     createdAt: String
     index: Int
   }
-`;
+`

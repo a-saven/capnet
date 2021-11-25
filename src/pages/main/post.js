@@ -23,7 +23,7 @@ const Post = ({ params }) => {
           </Typography>
         </Box>
         <Box align="center" justify="center">
-          <PostMenu id={c._id} />
+          <PostMenu id={c._id} post={params} />
         </Box>
       </Box>
       <Box m={3}>

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import AppBar from '@mui/material/AppBar'
@@ -7,15 +7,15 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import Typography from '@mui/material/Typography'
 import Slide from '@mui/material/Slide'
-import AddBoxIcon from '@mui/icons-material/AddBox'
-import Input from './input'
+import EditIcon from '@mui/icons-material/Edit'
+import EditInput from './editInput'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
-export default function FullScreenDialog() {
-  const [open, setOpen] = React.useState(false)
+export default function EditPostDialog({ post }) {
+  const [open, setOpen] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -28,7 +28,7 @@ export default function FullScreenDialog() {
   return (
     <div>
       <IconButton color="inherit" size="large" onClick={handleClickOpen}>
-        <AddBoxIcon />
+        <EditIcon />
       </IconButton>
       <Dialog
         fullScreen
@@ -50,20 +50,9 @@ export default function FullScreenDialog() {
             >
               <CloseIcon />
             </IconButton>
-            {/* <Box
-              sx={{ ml: 'auto', flex: 1 }}
-              disply="flex"
-              alignItems="flex-end"
-            >
-              <Box>
-                <Button autoFocus color="inherit" onClick={handleClose}>
-                  Save
-                </Button>
-              </Box>
-            </Box> */}
           </Toolbar>
         </AppBar>
-        <Input />
+        <EditInput post={post} />
       </Dialog>
     </div>
   )

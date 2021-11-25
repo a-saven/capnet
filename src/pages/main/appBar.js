@@ -145,36 +145,23 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit" size="large">
-          <Badge badgeContent={4} color="secondary">
-            <AddDialog />
-          </Badge>
-        </IconButton>
-        <p>New</p>
+        <AddDialog />
+        <Typography variant="body1">New</Typography>
       </MenuItem>
+
       <MenuItem>
-        <IconButton
-          aria-label="show 11 new notifications"
-          color="inherit"
-          size="large"
-        >
+        <IconButton color="inherit" size="large">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <Typography variant="body1">Notifications</Typography>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-          size="large"
-        >
+        <IconButton aria-haspopup="true" color="inherit" size="large">
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <Typography variant="body1">Profile</Typography>
       </MenuItem>
     </Menu>
   )
@@ -214,15 +201,10 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton
-              aria-label="show 4 new mails"
-              color="inherit"
-              size="large"
-            >
-              <Badge badgeContent={0} color="secondary">
-                <AddDialog />
-              </Badge>
-            </IconButton>
+            {/*   <Badge badgeContent={0} color="secondary"> */}
+            <AddDialog />
+            {/* </Badge> */}
+
             <IconButton
               aria-label="show 17 new notifications"
               color="inherit"

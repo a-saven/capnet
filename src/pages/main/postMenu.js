@@ -5,8 +5,9 @@ import Box from '@mui/material/Box'
 import MenuItem from '@mui/material/MenuItem'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import DeleteDialog from './deleteDialog'
+import EditDialog from './editDialog'
 
-export default function LongMenu({ id }) {
+export default function LongMenu({ id, post }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
 
@@ -35,14 +36,10 @@ export default function LongMenu({ id }) {
         keepMounted
         open={open}
         onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: 48 * 4.5,
-            width: 200
-          }
-        }}
       >
-        <MenuItem onClick={() => handleClose('edit')}>Edit</MenuItem>
+        <MenuItem onClick={() => handleClose('edit')}>
+          <EditDialog post={post} />
+        </MenuItem>
         <MenuItem onClick={() => handleClose('delete')}>
           <DeleteDialog id={id} />
         </MenuItem>

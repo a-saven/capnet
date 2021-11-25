@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
@@ -10,6 +11,7 @@ import { gql } from '@apollo/client'
 import { useMutation } from '@apollo/client'
 import { POSTS } from './feed'
 import { useSnackbar } from 'notistack'
+import Delete from '@mui/icons-material/Delete'
 
 const DELETE_POST = gql`
   mutation deletePost($id: ID) {
@@ -60,9 +62,9 @@ export default function AlertDialog({ id }) {
 
   return (
     <Box>
-      <Button variant="text" onClick={handleClickOpen}>
-        Delete
-      </Button>
+      <IconButton color="inherit" size="large" onClick={handleClickOpen}>
+        <Delete />
+      </IconButton>
       <Dialog
         open={open}
         onClose={handleClose}

@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react'
 
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
-import SubmitPost from './submitPost'
+import EditPost from './editPost'
 
-const Input = (props) => {
-  const [values, setValues] = useState({ text: '', title: '', tag: '' })
+const Input = ({ post }) => {
+  const [values, setValues] = useState({
+    text: '' || post.text,
+    title: '' || post.title,
+    tag: '' || post.tag
+  })
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value })
@@ -57,7 +61,8 @@ const Input = (props) => {
           />
         </Box>
         <Box display="flex" justifyContent="center" alignItems="center">
-          <SubmitPost
+          <EditPost
+            _id={post._id}
             text={values.text}
             title={values.title}
             tag={values.tag}
