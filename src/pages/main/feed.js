@@ -44,14 +44,21 @@ export default function Feed({ searchText }) {
     >
       {data.posts
         .filter((post) => {
-          if (post?.text?.includes(searchText)) {
+          if (searchText && post?.text?.includes(searchText)) {
             return post
           }
-          if (post?.tag?.includes(searchText)) {
+          if (searchText && post?.tag?.includes(searchText)) {
             return post
           }
-          if (searchText.includes('#') && post?.title?.includes(searchText)) {
+          if (
+            searchText &&
+            searchText.includes('#') &&
+            post?.title?.includes(searchText)
+          ) {
             return title
+          }
+          if (!searchText) {
+            return post
           }
         })
         .map((params) => (

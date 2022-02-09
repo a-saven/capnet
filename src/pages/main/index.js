@@ -5,7 +5,7 @@ import AppBar from './appBar'
 import UserQuery from './userQuery'
 
 export default function Main() {
-  const [searchText, setSearchText] = useState(null)
+  const [searchText, setSearchText] = useState('')
 
   const handleSearchText = (text) => {
     setSearchText(text)
@@ -14,7 +14,7 @@ export default function Main() {
   return (
     <UserQuery>
       <Feed searchText={searchText} />
-      <AppBar handleSearchText={handleSearchText}/>
+      <AppBar handleSearchText={handleSearchText} />
     </UserQuery>
   )
 }
