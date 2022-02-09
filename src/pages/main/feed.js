@@ -17,7 +17,7 @@ export const POSTS = gql`
   }
 `
 
-export default function Feed() {
+export default function Feed({ searchText }) {
   const { loading, error, data } = useQuery(POSTS)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
@@ -42,9 +42,21 @@ export default function Feed() {
         }
       }}
     >
-      {data.posts.map((params) => (
-        <Post params={params} key={params._id} />
-      ))}
+      {data.posts
+        .filter((post) => {
+          if (post?.text?.includes(searchText)) {
+            return post
+          }
+          if (post?.tag?.includes(searchText)) {
+            return post
+          }
+          if (searchText.includes('#') && post?.title?.includes(searchText)) {
+            return title
+          }
+        })
+        .map((params) => (
+          <Post params={params} key={params._id} />
+        ))}
     </Box>
   )
 }

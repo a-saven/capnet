@@ -15,7 +15,7 @@ import { useRouter } from 'next/router'
 import AddDialog from './addDialog'
 import Search from './search'
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ handleSearchText }) {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
@@ -124,7 +124,7 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Capitain's Log
           </Typography>
-          <Search />
+          <Search handleSearchText={handleSearchText} />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/*   <Badge badgeContent={0} color="secondary"> */}

@@ -3,7 +3,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { alpha } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 
-export default function Search() {
+export default function Search({ handleSearchText }) {
   const classes = useStyles()
 
   return (
@@ -12,6 +12,7 @@ export default function Search() {
         <SearchIcon />
       </div>
       <InputBase
+        onChange={(event) => handleSearchText(event.target.value)}
         placeholder="Search…"
         classes={{
           root: classes.inputRoot,
