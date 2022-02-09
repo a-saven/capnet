@@ -41,11 +41,3 @@ export default function SubmitPost({ text, title, tag, clearInput }) {
     </React.Fragment>
     );
 }
-
-
-// data && data.getAllPosts && !data.getAllPosts.success
-//     ? <p data-testid="post">{data.getAllPosts.text}</p>
-//     :
-
-//remove iframe
-//remove extension
