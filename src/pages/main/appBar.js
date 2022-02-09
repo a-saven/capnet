@@ -12,14 +12,10 @@ import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
 import AccountCircle from '@mui/icons-material/AccountCircle'
-import MailIcon from '@mui/icons-material/Mail'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import MoreIcon from '@mui/icons-material/MoreVert'
 import { useRouter } from 'next/router'
-import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize'
-import AddBoxIcon from '@mui/icons-material/AddBox'
 import AddDialog from './addDialog'
-import { AppBar as AppBarMui } from '@mui/material'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -171,9 +167,15 @@ export default function PrimarySearchAppBar() {
       <AppBar
         position="fixed"
         color="primary"
-        sx={{ top: 'auto', bottom: 0, maxWidth: '100%' }}
+        sx={{
+          top: 'auto',
+          bottom: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
       >
-        <Toolbar>
+        <Toolbar sx={{ maxWidth: 1200, width: '100%' }}>
           <IconButton
             edge="start"
             className={classes.menuButton}
