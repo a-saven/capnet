@@ -15,33 +15,6 @@ import { useRouter } from 'next/router'
 import AddDialog from './addDialog'
 import Search from './search'
 
-const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block'
-    }
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex'
-    }
-  },
-  sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none'
-    }
-  }
-}))
-
 export default function PrimarySearchAppBar() {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -198,3 +171,30 @@ export default function PrimarySearchAppBar() {
     </div>
   )
 }
+
+const useStyles = makeStyles((theme) => ({
+  grow: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block'
+    }
+  },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex'
+    }
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'none'
+    }
+  }
+}))

@@ -3,6 +3,26 @@ import SearchIcon from '@mui/icons-material/Search'
 import { alpha } from '@mui/material/styles'
 import makeStyles from '@mui/styles/makeStyles'
 
+export default function Search() {
+  const classes = useStyles()
+
+  return (
+    <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
+      </div>
+      <InputBase
+        placeholder="Search…"
+        classes={{
+          root: classes.inputRoot,
+          input: classes.inputInput
+        }}
+        inputProps={{ 'aria-label': 'search' }}
+      />
+    </div>
+  )
+}
+
 const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
@@ -38,23 +58,3 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit'
   }
 }))
-
-export default function Search() {
-  const classes = useStyles()
-
-  return (
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div>
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput
-        }}
-        inputProps={{ 'aria-label': 'search' }}
-      />
-    </div>
-  )
-}
