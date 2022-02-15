@@ -17,7 +17,7 @@ export const POSTS = gql`
   }
 `
 
-export default function Feed({ searchText }) {
+export default function Feed({ searchText, sortParam }) {
   const { loading, error, data } = useQuery(POSTS)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
@@ -59,6 +59,20 @@ export default function Feed({ searchText }) {
           }
           if (!searchText) {
             return post
+          }
+        })
+        .sort((a, b) => {
+          switch (sortParam) {
+            case 'tagAZ':
+              return a.tag.localeCompare(b.tag)
+            case 'tagZA':
+              return b.tag.localeCompare(a.tag)
+            case 'dateAZ':
+              return b.createdAt - a.createdAt
+            case 'dateZA':
+              return a.createdAt - b.createdAt
+            default:
+              return a - b
           }
         })
         .map((params) => (

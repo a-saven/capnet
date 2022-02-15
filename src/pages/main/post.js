@@ -10,7 +10,6 @@ const Post = ({ params }) => {
   if (!c) return null
   return (
     <Box width={'100%'}>
-      <Divider variant="middle" />
       <Box
         display="flex"
         flexDirection="row"
@@ -48,6 +47,7 @@ const Post = ({ params }) => {
           </Typography>
         </Box>
       </Box>
+      <Divider variant="middle" />
     </Box>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import makeStyles from '@mui/styles/makeStyles'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
@@ -14,12 +14,15 @@ import MoreIcon from '@mui/icons-material/MoreVert'
 import { useRouter } from 'next/router'
 import AddDialog from './addDialog'
 import Search from './search'
+import Sort from './sort'
 
-export default function PrimarySearchAppBar({ handleSearchText }) {
+export default function PrimarySearchAppBar({
+  handleSearchText,
+  handleSortParams
+}) {
   const classes = useStyles()
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
-
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null)
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
@@ -125,6 +128,7 @@ export default function PrimarySearchAppBar({ handleSearchText }) {
             Capitain's Log
           </Typography>
           <Search handleSearchText={handleSearchText} />
+          <Sort handleSortParam={handleSortParams} />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/*   <Badge badgeContent={0} color="secondary"> */}
